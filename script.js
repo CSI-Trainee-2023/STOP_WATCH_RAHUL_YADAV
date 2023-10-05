@@ -1,6 +1,7 @@
 // alert("wrong window")
 // Convert time to a format of hours, minutes, seconds, 
-
+let lapTimes = [];
+let lapCounter = 1;
 function timeToString(time) {
     let diffInHrs = time / 3600000;
     let hh = Math.floor(diffInHrs);
@@ -56,14 +57,15 @@ function timeToString(time) {
  
 
 function lap() {
-//   var lapsData = [];
-// lapsData[0] = prompt(time);
-// localStorage.setItem("lapsData", JSON.stringify(names));
 
-// var storedNames = JSON.parse(localStorage.getItem("lapData"));
-  lapPrint(timeToString(elapsedTime));
-  localStorage.setItem("lapsNumber", timeToString(elapsedTime));
-  document.getElementById("laps").innerHTML = localStorage.getItem("lapsNumber");
+         const currentTime = Date.now();
+        lapTimes.push({ lap: lapCounter++, time: timeToString(elapsedTime) });
+        const lapList = document.getElementById("lapList");
+        const lapItem = document.createElement("li");
+        lapItem.textContent = `Lap ${lapTimes.length}: ${timeToString(elapsedTime) }`;
+        lapList.appendChild(lapItem);
+        elapsedTime = currentTime;
+
 }
 
   function reset() {
