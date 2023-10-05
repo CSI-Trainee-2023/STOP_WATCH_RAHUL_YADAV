@@ -1,0 +1,75 @@
+body{
+    background-image: url("assets/background.jpg");
+
+}
+.clockBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.clockButtons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+#timeFormat{
+    color: aliceblue;
+    font-size: xx-large;
+    font-weight: bolder;
+    text-align: center;
+    padding-top: 25%;
+    padding-bottom: 150px;
+}
+.buttonClass{
+    padding-left: 110px;
+    padding-right: 110px;
+}
+
+.resetButton{
+    border: rgba(61, 61, 79, 0.913) solid;
+    border-width: 1px;
+    border-radius:19px ;
+    width: 90px;
+    height: 40px;
+    color: rgb(255, 72, 0);
+    font-size: larger;
+    font-weight: 500;
+    
+    align-items: center;
+    margin-left: 300px;
+}
+.playButton{
+    border: rgba(61, 61, 79, 0.913) solid;
+    border-width: 1px;
+    border-radius:19px ;
+    width: 90px;
+    height: 40px;
+    align-items: center;
+   
+    color: rgb(255, 72, 0);
+    font-size: larger;
+    font-weight: 500;
+    
+    margin-right: 70px;
+}
+
+#start{
+    display: block;
+    
+}
+#resume{
+    display: none;
+   
+}
+#lap{
+    display: none;
+}
+#stop{
+    display: block;
+}
+#reset{
+    display:none;
+}
