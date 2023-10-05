@@ -1,3 +1,12 @@
+h1{
+    font-size: 50px;
+    font-weight: bolder;
+    color: aliceblue;
+    margin-top: 120px;
+    font-family: "Sofia", sans-serif;
+  font-size: 50px;
+  text-shadow: 3px 3px 3px #ababab;
+}
 body{
     background-image: url("assets/background.jpg");
 
@@ -17,11 +26,34 @@ body{
 }
 #timeFormat{
     color: aliceblue;
-    font-size: xx-large;
+    font-size: 44px;
     font-weight: bolder;
     text-align: center;
-    padding-top: 25%;
-    padding-bottom: 150px;
+    padding-top: 10%;
+    padding-bottom: 110px;
+    padding-left: 70px;
+    padding-right: 70px;
+    border: rgba(4, 4, 44, 0.938) solid;
+    border-width: 11px;
+    border-radius: 50%;
+    /* box-sha/dow: 5px; */
+}
+.lapPrint{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 20px;
+    color: aliceblue;
+    margin-bottom: 100px;
+}
+#lapPrintText{
+    color: aliceblue;
+    font-size: large;
+    /* font-weight: bolder; */
+    text-align: center;
+    margin-left: 100px;
+    
 }
 .buttonClass{
     padding-left: 110px;
@@ -72,4 +104,11 @@ body{
 }
 #reset{
     display:none;
+}
+ul{
+    text-align: center;
+    font-size: larger;
+    font-weight: 100;
+    margin-left: 30px;
+    margin-right: 30px;
 }

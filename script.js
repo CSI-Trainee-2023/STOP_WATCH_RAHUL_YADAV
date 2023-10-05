@@ -30,7 +30,9 @@ function timeToString(time) {
   function print(txt) {
     document.getElementById("timeFormat").innerHTML = txt;
   }
-  
+  function lapPrint(txt){
+    document.getElementById("laps").innerHTML = txt;
+  }
   // Create "start", "pause" and "reset" functions
   
     
@@ -41,28 +43,35 @@ function timeToString(time) {
       elapsedTime = Date.now() - startTime;
       print(timeToString(elapsedTime));
     }, 10);
-    // showButton("STOP");
+    
     showButton("LAP");
   }
   
   function stop() {
     clearInterval(timerInterval);
     showButton("RESET");
-    showButton("RESUME");
+    viewButton("RESUME");
   }
     
-    function lap() {
-    
-    showButton("LAP");
-  }
+ 
 
-  
+function lap() {
+//   var lapsData = [];
+// lapsData[0] = prompt(time);
+// localStorage.setItem("lapsData", JSON.stringify(names));
+
+// var storedNames = JSON.parse(localStorage.getItem("lapData"));
+  lapPrint(timeToString(elapsedTime));
+  localStorage.setItem("lapsNumber", timeToString(elapsedTime));
+  document.getElementById("laps").innerHTML = localStorage.getItem("lapsNumber");
+}
+
   function reset() {
     clearInterval(timerInterval);
     print("00:00:00");
     elapsedTime = 0;
     showButton("START");
-    showButton("STOP");
+    viewButton("STOP");
     
   }
   function resume() {
@@ -72,7 +81,7 @@ function timeToString(time) {
       print(timeToString(elapsedTime));
     }, 10);
     showButton("LAP");
-    showButton("STOP");
+    viewButton("STOP");
     
   }
      
@@ -84,28 +93,28 @@ function timeToString(time) {
   function showButton(buttonKey) {
     const buttonToShow = buttonKey === "START" ? startButton : resumeButton;
     const buttonToHide = buttonKey === "START" ? resumeButton : startButton;
-    const buttonToShowResume = buttonKey === "RESUME" ? resumeButton : lapButton;
-    const buttonToHideResume = buttonKey === "RESUME" ? lapButton : resumeButton;
     const buttonToShowReset = buttonKey === "RESET" ? resetButton : stopButton;
     const buttonToHideReset = buttonKey === "RESET" ? stopButton : resetButton;
-    const buttonToShowStop = buttonKey === "STOP" ? stopButton : resetButton;
-    const buttonToHideStop = buttonKey === "STOP" ? resetButton : stopButton;
     const buttonToShowLap = buttonKey === "LAP" ? lapButton : resumeButton;
     const buttonToHideLap = buttonKey === "LAP" ? resumeButton : lapButton;
-    // const buttonToShowLapFirst = buttonKey === "LAPFIRST" ? lapButton : startButton;
-    // const buttonToHideLapFirst = buttonKey === "LAPFIRST" ? startButton : lapButton;
     buttonToShow.style.display = "block";
     buttonToHide.style.display = "none";
-    buttonToShowResume.style.display = "block";
-    buttonToHideResume.style.display = "none";
     buttonToShowReset.style.display = "block";
     buttonToHideReset.style.display = "none";
-    buttonToShowStop.style.display = "block";
-    buttonToHideStop.style.display = "none";
     buttonToShowLap.style.display = "block";
     buttonToHideLap.style.display = "none";
-    // buttonToShowLapFirst.style.display = "block";
-    // buttonToHideLapFirst.style.display = "none";
+    
+    
+  }
+  function viewButton(buttonKey){
+    const buttonToShowStop = buttonKey === "STOP" ? stopButton : resetButton;
+    const buttonToHideStop = buttonKey === "STOP" ? resetButton : stopButton;
+    const buttonToShowResume = buttonKey === "RESUME" ? resumeButton : lapButton;
+    const buttonToHideResume = buttonKey === "RESUME" ? lapButton : resumeButton;
+    buttonToShowResume.style.display = "block";
+    buttonToHideResume.style.display = "none";
+    buttonToShowStop.style.display = "block";
+    buttonToHideStop.style.display = "none";
   }
    
   // Create event listeners
@@ -127,3 +136,21 @@ function timeToString(time) {
   stopButton.addEventListener("click", stop);
   resumeButton.addEventListener("click", resume);
 
+  function handleKeyPress(event) {
+    if (event.ctrlKey) {
+        if (event.key === 's') {
+            start();
+        } else if (event.key === 'x') {
+            stop();
+        } 
+        else if (event.key === 'r') {
+          reset();
+      } else if (event.key === 'l') {
+        lap();
+    } else if (event.key === 'p') {
+      resume();
+  } 
+    }
+}
+
+document.addEventListener('keydown', handleKeyPress);
